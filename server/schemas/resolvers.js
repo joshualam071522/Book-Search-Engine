@@ -4,6 +4,14 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        me: async (parent, args, context) => {
+            if (context.user) {
+                const userData = await User.findOne({ _id: context.user._id })
+                
+                return userData;
+            }
+            throw new authenticationError('Not logged in');
+        },
         user: async (parent, { userId, username }) => {
             return User.findOne({
                 $or: [{ _id: userId }, { username: username }]
