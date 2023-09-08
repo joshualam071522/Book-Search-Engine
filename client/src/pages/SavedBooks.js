@@ -11,7 +11,7 @@ import { removeBookId } from '../utils/localStorage';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
-import { REMOVE_BOOK } from '../utils/mutations';
+import { DELETE_BOOK } from '../utils/mutations';
 
 
 const SavedBooks = () => {
@@ -22,6 +22,7 @@ const SavedBooks = () => {
 
 
   const { loading, data } = useQuery(QUERY_ME);
+  const [removeBook, { error }] = useMutation(DELETE_BOOK);
 
   // returns loading div if data is still loading
   if (loading) {
@@ -29,8 +30,6 @@ const SavedBooks = () => {
   }
 
   const userData = data?.me || {};
-
-  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
