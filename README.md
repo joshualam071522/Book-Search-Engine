@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![My Image](/book-search-engine-readme.png)
+![My Image](/book-search-engine-readme1.png)
 
 Link to deployed application: 
 
